@@ -77,15 +77,4 @@ export const footerLinks = [
       "Packagephobia",
     ],
   },
-  {
-    title: "Development Resources",
-    links: [
-      "Freelancing",
-      "Development Hiring",
-      "Development Portfolio",
-      "Development Education",
-      "Creative Process",
-      "Development Industry Trends",
-    ],
-  },
 ];

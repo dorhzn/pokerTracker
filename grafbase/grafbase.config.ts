@@ -8,12 +8,12 @@ const User = g.model("User", {
   githubUrl: g.url().optional(),
   linkedInUrl: g.url().optional(),
   pokerSessions: g
-    .relation(() => pokerSessions)
+    .relation(() => PokerSessions)
     .list()
     .optional(),
 });
 
-const pokerSessions = g.model("pokerSessions", {
+const PokerSessions = g.model("PokerSessions", {
   date: g.date(),
   initialAmount: g.int(),
   finalAmount: g.int(),
