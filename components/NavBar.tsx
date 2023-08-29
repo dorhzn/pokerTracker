@@ -5,12 +5,13 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { NavLinks } from "@/constants";
 import AuthProviders from "./AuthProviders";
+import { getCurrentUser } from "@/lib/session";
 
-const NavBar = () => {
+const NavBar = async () => {
   //const { data: session } = useSession();
   //const [providers, setProviders] = useState(null);
 
-  const session = {};
+  const session = await getCurrentUser();
 
   //useEffect(() => {
   // const setUpProviders = async () => {
@@ -21,31 +22,41 @@ const NavBar = () => {
   //}, []);
 
   return (
-    <nav className="flex-between navbar">
+    <nav className="flexBetween navbar">
       <div className="flex-1 flexStart gap-10">
-        <Link href="/" className="flex gap-2 flex-center">
+        <Link href="/">
           <Image
             src="/logo.svg"
             width={30}
             height={30}
             alt="PokerTracker"
           ></Image>
-          <ul className="xl:flex hidden text-small gap-7"></ul>
+        </Link>
+        <ul className="xl:flex hidden text-small gap-7">
           {NavLinks.map((link) => (
             <Link href={link.href} key={link.key}>
               {link.text}
             </Link>
           ))}
-        </Link>
+        </ul>
       </div>
 
       <div className="flexCenter gap-4">
-        {session ? (
-          <div className="flex gap-3 md:gap-5">
+        {session?.user ? (
+          <>
+            {session?.user?.image && (
+              <Image
+                src={session.user.image}
+                width={40}
+                height={40}
+                className="rounded-full"
+                alt={session.user.name}
+              />
+            )}
             <Link href="/create-project" className="black_btn">
               Share Work
             </Link>
-          </div>
+          </>
         ) : (
           <AuthProviders />
         )}

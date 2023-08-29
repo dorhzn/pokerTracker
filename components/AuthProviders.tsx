@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { signIn, getProviders } from "next-auth/react";
 
 type Provider = {
   id: string;
   name: string;
   type: string;
-  signInUrl: string;
+  signInUrl?: string;
   callbackUrl: string;
   signInUrlParams?: Record<string, string> | null;
 };
@@ -36,7 +36,7 @@ const AuthProviders = () => {
             onClick={() => signIn(provider.id)}
             className="black_btn"
           >
-            Sign In
+            {provider.id}
           </button>
         ))}
     </>

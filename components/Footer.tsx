@@ -36,33 +36,8 @@ const Footer = () => {
             title={footerLinks[0].title}
             Links={footerLinks[0].links}
           />
-          <div className="flex-1 flex flex-col gap-4">
-            <FooterColumn
-              title={footerLinks[1].title}
-              Links={footerLinks[1].links}
-            />
-            <FooterColumn
-              title={footerLinks[2].title}
-              Links={footerLinks[2].links}
-            />
-          </div>
-          <FooterColumn
-            title={footerLinks[3].title}
-            Links={footerLinks[3].links}
-          />
-          <div className="flex-1 flex flex-col gap-4">
-            <FooterColumn
-              title={footerLinks[4].title}
-              Links={footerLinks[4].links}
-            />
-            <FooterColumn
-              title={footerLinks[5].title}
-              Links={footerLinks[5].links}
-            />
-          </div>
         </div>
       </div>
-
       <div className="flexBetween footer_copyright">
         <p>@2023 PokerTracker All rights reserved</p>
       </div>
