@@ -20,11 +20,10 @@ export const authOptions: NextAuthOptions = {
         {
           ...token,
           iss: "grafbase",
-          exp: Math.floor(Date.now() / 1000) + 60 * 60,
+          // exp: Math.floor(Date.now() / 1000) + 60 * 60,
         },
         secret
       );
-
       return encodedToken;
     },
     decode: async ({ secret, token }) => {
@@ -82,6 +81,5 @@ export const authOptions: NextAuthOptions = {
 
 export async function getCurrentUser() {
   const session = (await getServerSession(authOptions)) as SessionInterface;
-
   return session;
 }

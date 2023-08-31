@@ -1,25 +1,12 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { NavLinks } from "@/constants";
 import AuthProviders from "./AuthProviders";
 import { getCurrentUser } from "@/lib/session";
+import ProfileMenu from "./ProfileMenu";
+import Link from "next/link";
+import Image from "next/image";
 
 const NavBar = async () => {
-  //const { data: session } = useSession();
-  //const [providers, setProviders] = useState(null);
-
   const session = await getCurrentUser();
-
-  //useEffect(() => {
-  // const setUpProviders = async () => {
-  //   const response = await getProviders();
-  //   setProviders(response);
-  // };
-  //setUpProviders();
-  //}, []);
 
   return (
     <nav className="flexBetween navbar">
@@ -44,16 +31,9 @@ const NavBar = async () => {
       <div className="flexCenter gap-4">
         {session?.user ? (
           <>
-            {session?.user?.image && (
-              <Image
-                src={session.user.image}
-                width={40}
-                height={40}
-                className="rounded-full"
-                alt={session.user.name}
-              />
-            )}
-            <Link href="/create-project" className="black_btn">
+            <ProfileMenu session={session} />
+
+            <Link href="/create-poker-session" className="black_btn">
               Share Work
             </Link>
           </>

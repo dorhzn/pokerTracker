@@ -20,6 +20,7 @@ const AuthProviders = () => {
   useEffect(() => {
     const setUpProviders = async () => {
       const response = await getProviders();
+      console.log("providers are : " + response);
       setProviders(response);
     };
 
