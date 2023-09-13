@@ -26,7 +26,7 @@ const FormField = ({
         type={type || "text"}
         placeholder={placeholder}
         required
-        //value={state}
+        value={state}
         className="form_field-input"
         onChange={(e) => setState(e.target.value)}
       ></input>
