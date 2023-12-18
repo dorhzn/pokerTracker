@@ -27,3 +27,16 @@ export const createUserMutation = `mutation createUser($input:UserCreateInput!) 
     }
 }
 `;
+
+export const createPokerSessionMutation = `mutation createPokerSessions($input:PokerSessionsCreateInput!) {
+    pokerSessionsCreate(input:$input) {
+        pokerSessions{
+            date
+            initialAmount
+            finalAmount
+            profit
+            host        
+        }
+    }
+}
+`;

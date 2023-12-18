@@ -1,4 +1,9 @@
-import { createUserMutation, getUserQuery } from "@/graphql";
+import { PokerSessionsForm } from "@/common.types";
+import {
+  createPokerSessionMutation,
+  createUserMutation,
+  getUserQuery,
+} from "@/graphql";
 import { GraphQLClient } from "graphql-request";
 
 const isProd = process.env.NODE_ENV === "production";
@@ -38,4 +43,30 @@ export const createUser = (name: string, email: string, avatarUrl: string) => {
     },
   };
   return makeGraphQLRequest(createUserMutation, variables);
+};
+
+export const createNewPokerSession = async (
+  form: PokerSessionsForm,
+  creatorId: string
+) => {
+  client.setHeader("x-api-key", apiKey);
+
+  form = {
+    date: form.date,
+    initialAmount: +form.initialAmount,
+    finalAmount: +form.finalAmount,
+    profit: +form.profit,
+    host: form.host,
+  };
+
+  const variables = {
+    input: {
+      ...form,
+      // createdBy: {
+      //   link: creatorId,
+      // },
+    },
+  };
+
+  return makeGraphQLRequest(createPokerSessionMutation, variables);
 };

@@ -14,7 +14,7 @@ export interface PokerSessionsInterface {
   finalAmount: number;
   profit: string;
   id: string;
-  createdBy: {
+  createdBy?: {
     name: string;
     email: string;
     avatarUrl: string;

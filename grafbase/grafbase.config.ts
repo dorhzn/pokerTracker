@@ -22,11 +22,11 @@ const User = g
 const PokerSessions = g
   .model("PokerSessions", {
     date: g.date(),
-    initialAmount: g.int(),
+    initialAmount: g.int().unique(),
     finalAmount: g.int(),
     profit: g.int(),
     host: g.string(),
-    createdBy: g.relation(() => User),
+    //createdBy: g.relation(() => User),
   })
   .auth((rules) => {
     rules.public().read(), rules.private().create().delete().update();

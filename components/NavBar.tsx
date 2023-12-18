@@ -34,7 +34,7 @@ const NavBar = async () => {
             <ProfileMenu session={session} />
 
             <Link href="/create-poker-session" className="black_btn">
-              Share Work
+              Add Poker Session
             </Link>
           </>
         ) : (
